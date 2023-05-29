@@ -10,6 +10,7 @@ import {ReactComponent as IceCreamIcon} from '../../assets/ice-cream.svg'
 
 
 import menuImg from '../../assets/menu.svg'
+import { NavLink } from "react-router-dom";
 
 export function Sidebar(){
   const [menuOpen,setMenuOpen] = useState(false)
@@ -25,28 +26,28 @@ export function Sidebar(){
     <nav>
       <ul>
         <li>
-          <a href="#" className='active'>
+          <NavLink to="/" >
             <BurgerIcon/>
             <span>Hambúrgueres</span>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" >
+          <NavLink to="pizzas" >
             <PizzaIcon/>
             <span>Pizzas</span>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" >
+          <NavLink to="drinks" >
             <SodaPopIcon/>
             <span>Sodas</span>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" >
+          <NavLink to="icecrean" >
             <IceCreamIcon/>
             <span>Sorvetes</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
