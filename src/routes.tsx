@@ -14,8 +14,8 @@ export function AppRoutes() {
       <Route path='/' element={<MainPage />}>
         <Route path='/' element={<BurguesPage/>}/>
         <Route path='pizzas' element={<PizzasPage/>}/>
-        <Route path='icecrean' element={<IceCreamPage/>}/>
         <Route path='drinks' element={<DrinksPage/>}/>
+        <Route path='ice-crean' element={<IceCreamPage/>}/>
 
       </Route>
     </Routes>

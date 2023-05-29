@@ -44,7 +44,7 @@ export function Sidebar(){
           </NavLink>
         </li>
         <li>
-          <NavLink to="icecrean" >
+          <NavLink to="ice-crean" >
             <IceCreamIcon/>
             <span>Sorvetes</span>
           </NavLink>
