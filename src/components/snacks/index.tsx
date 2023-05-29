@@ -1,3 +1,4 @@
+import { currentyFormat } from "../../helpers/currentFormat"
 import { Container } from "./styles"
 import { FiPlus } from 'react-icons/fi'
 interface snacksPropps{
@@ -12,7 +13,7 @@ export function Snacks({snacks}:snacksPropps) {
           <img src={snack.image} alt={snack.name} />
           <p>{snack.description}</p>
           <div>
-            <strong>{snack.price}</strong>
+            <strong>{currentyFormat(snack.price)}</strong>
             <button type='button'>
               <FiPlus/>
               </button>
