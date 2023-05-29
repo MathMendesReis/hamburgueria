@@ -1,6 +1,6 @@
 {
-  "short_name": "Aplicação React",
-  "name": "Templade Dev Samurai de aplicação React",
+  "short_name": "Hamburgueria",
+  "name": "Template de um eccomerc que vende hamburgues",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#F83600",
+  "theme_color": "#FFFFFF",
   "background_color": "#141518"
 }
