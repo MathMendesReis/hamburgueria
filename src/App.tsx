@@ -7,6 +7,8 @@ import { GlobalStyle } from './styles/global'
 import { Normalize } from 'styled-normalize'
 import { SnackProvider } from './context/SnackContext'
 import { CartProvider } from './context/CartContext'
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css" ;
 
 export default function App() {
   return (
@@ -15,6 +17,7 @@ export default function App() {
           <SnackProvider>
             <CartProvider>
               <AppRoutes />
+              <ToastContainer autoClose={2000}/>
               <GlobalStyle />
               <Normalize />
             </CartProvider>
