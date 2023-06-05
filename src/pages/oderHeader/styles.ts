@@ -8,7 +8,7 @@ width: 40%;
 padding-top: 5rem;
 
 img{
-  width: 8rem;
+  width: 15rem;
 }
 >div{
   background: none;
