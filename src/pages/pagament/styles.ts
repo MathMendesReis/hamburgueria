@@ -11,6 +11,10 @@ background-color: ${({theme})=>theme.colors.black};
 padding: 2rem 2.5rem;
 border-radius: 8px;
 }
+
+p{
+  color: ${({theme})=>theme.colors.red};
+}
 `
 
 export const Formulario = styled.form`

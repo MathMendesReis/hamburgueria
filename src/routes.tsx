@@ -20,7 +20,7 @@ export function AppRoutes() {
         <Route path='ice-crean' element={<IceCreamPage/>}/>
       </Route>
         <Route path='cart' element={<MyCartPage/>}/>
-        <Route path='pagamento' element={<PagamentPage/>}/>
+        <Route path='cart/pagamento' element={<PagamentPage/>}/>
     </Routes>
   )
 }

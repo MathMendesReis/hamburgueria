@@ -3,6 +3,7 @@ import { createContext, ReactNode, useState } from 'react'
 import { SnackData } from '../interfaces/SnackData'
 import { toast } from 'react-toastify'
 import { snackEmoji } from '../helpers/snackEmoji'
+import { CustomerData } from '../interfaces/customerData'
 
 interface Snack extends SnackData {
   quantity: number
@@ -26,6 +27,7 @@ interface CartContextProps {
   removeSnackFromCart: (snack:Snack) => void
   updateCart: (snack:Snack) => void
   decrement: (snack:Snack) => void
+  PayOder:(customer:CustomerData)=>void
 }
 
 interface CartProviderProps {
@@ -34,8 +36,23 @@ interface CartProviderProps {
 
 export const CartContext = createContext({} as CartContextProps)
 
+const localStorageKey = '@foodCommerce:cart'
+
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<Snack[]>([])
+  const [cart, setCart] = useState<Snack[]>(()=>{
+    const value = localStorage.getItem(localStorageKey)
+    if(value) return JSON.parse(value)
+    return[]
+  })
+
+  function saveCart(items:Snack[]) {
+    setCart(items)
+    localStorage.setItem(localStorageKey,JSON.stringify(items))
+  }
+
+  function clearLocalStorage() {
+    localStorage.removeItem(localStorageKey)
+  }
 
   function addSnackIntoCart(snack: SnackData): void {
 
@@ -55,7 +72,7 @@ export function CartProvider({ children }: CartProviderProps) {
         return item
       })
       toast.success(`Outor(a) ${snackEmoji(snack.snack)} ${snack.name} adicionado nos pedidos.`)
-      setCart(newCart)
+      saveCart(newCart)
 
       return
 
@@ -65,7 +82,7 @@ export function CartProvider({ children }: CartProviderProps) {
     const newCart = [...cart, newSnack] // push de um array
 
     toast.success(` ${snackEmoji(snack.snack)} ${snack.name} adicionado nos pedidos.`)
-    setCart(newCart)
+    saveCart(newCart)
   }
 
   function removeSnackFromCart(snack:Snack):void {
@@ -76,7 +93,7 @@ export function CartProvider({ children }: CartProviderProps) {
    )
    )
    toast.success(` ${snackEmoji(snack.snack)} ${snack.name} removido do pedido.`)
-   setCart(newCart)
+   saveCart(newCart)
   }
 
   function updateCart(snack:Snack){
@@ -92,7 +109,7 @@ export function CartProvider({ children }: CartProviderProps) {
       }
       return item
     })
-    setCart(newCart)
+    saveCart(newCart)
   }
 
   function decrement(snack:Snack) {
@@ -108,8 +125,13 @@ export function CartProvider({ children }: CartProviderProps) {
       }
       return item
     })
-    setCart(newCart)
+    saveCart(newCart)
   }
 
-  return <CartContext.Provider value={{ cart, addSnackIntoCart,removeSnackFromCart,updateCart,decrement }}>{children}</CartContext.Provider>
+  function PayOder(customer:CustomerData) {
+    clearLocalStorage()
+    console.log("payoder", cart,customer)
+  }
+
+  return <CartContext.Provider value={{ cart, addSnackIntoCart,removeSnackFromCart,updateCart,decrement,PayOder }}>{children}</CartContext.Provider>
 }
